@@ -1,0 +1,26 @@
+version: '2'
+services:
+  eurekaserver:
+   image:   bilalwahla/df-eurekasvr:product-selection
+   ports:
+       - "8761:8761"
+  configserver:
+    image: bilalwahla/df-confsvr:product-selection
+    ports:
+       - "8888:8888"
+    environment:
+       EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+       EUREKASERVER_PORT: "8761"
+       ENCRYPT_KEY:       "IMSYMMETRIC"
+  zuulserver:
+    image: bilalwahla/df-zuulsvr:product-selection
+    ports:
+      - "5555:5555"
+    environment:
+      PROFILE: "default"
+      SERVER_PORT: "5555"
+      CONFIGSERVER_URI: "http://configserver:8888"
+      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+      DATABASESERVER_PORT: "5432"
+      EUREKASERVER_PORT:   "8761"
+      CONFIGSERVER_PORT:   "8888"
