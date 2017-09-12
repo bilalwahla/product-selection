@@ -1,0 +1,134 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Product Selection - Microservices",
+		"_postman_id": "6d70f9fe-bfb6-bbb8-9e1e-f2dd7c1ad17e",
+		"description": "Collection containing tests for the Product Selection assignment. Tests cover:\n\n- Independently testing catalogue-service\n- Testing catalogue-service via Zuul (API Gateway Service)\n- Independently testing customer-location-service\n- Testing customer-location-service via Zuul (API Gateway Service)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Catalogue Service",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Catalogues for Liverpool",
+					"request": {
+						"url": "http://localhost:8082/v1/catalogue/LIVERPOOL",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Catalogues for London",
+					"request": {
+						"url": "http://localhost:8082/v1/catalogue/LONDON",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "API Gateway Service",
+			"description": "",
+			"item": [
+				{
+					"name": "Zuul Routes",
+					"request": {
+						"url": "localhost:5555/routes",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Catalogues for London",
+					"request": {
+						"url": "http://localhost:5555/catalogue-service/v1/catalogue/LONDON",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Catalogues for Liverpool",
+					"request": {
+						"url": "http://localhost:5555/catalogue-service/v1/catalogue/LIVERPOOL",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer Location (London)",
+					"request": {
+						"url": "http://localhost:5555/customer-location-service/v1/customer-location/1a1d87d0e0c54f5bac2d384fd10d09ab",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer Location (Liverpool)",
+					"request": {
+						"url": "http://localhost:5555/customer-location-service/v1/customer-location/482a597b15f244fcae926de5ef30f231",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customer Location Service",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Customer Location (London)",
+					"request": {
+						"url": "http://localhost:8081/v1/customer-location/1a1d87d0e0c54f5bac2d384fd10d09ab",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer Location (Liverpool)",
+					"request": {
+						"url": "http://localhost:8081/v1/customer-location/482a597b15f244fcae926de5ef30f231",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
