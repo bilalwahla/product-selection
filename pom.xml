@@ -10,8 +10,8 @@
   <packaging>pom</packaging>
 
 
-  <name>df-product-selection-parent-pom</name>
-  <description>Parent POM for the dragongly Product Selection project</description>
+  <name>dragonfly Product Selection Parent POM</name>
+  <description>Parent POM for the dragonfly Product Selection project</description>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -23,6 +23,7 @@
     <module>eurekasvr</module>
     <module>zuulsvr</module>
     <module>customer-location-service</module>
+    <module>catalogue-service</module>
   </modules>
   <build>
     <plugins>
