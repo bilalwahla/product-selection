@@ -16,3 +16,4 @@ Rest of the services in the project are the assignment requirements:
 
  * customer-location-service
  * catalogue-service
+
