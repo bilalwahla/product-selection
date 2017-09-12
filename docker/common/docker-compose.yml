@@ -24,3 +24,26 @@ services:
       DATABASESERVER_PORT: "5432"
       EUREKASERVER_PORT:   "8761"
       CONFIGSERVER_PORT:   "8888"
+  database:
+    image: postgres:9.5
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=p0stgr@s
+      - POSTGRES_DB=product_selection_local
+  customer-location-service:
+    image: bilalwahla/df-customer-location-service:product-selection
+    ports:
+      - "8081:8081"
+    environment:
+      PROFILE: "default"
+      SERVER_PORT: "8081"
+      CONFIGSERVER_URI: "http://configserver:8888"
+      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+      DATABASESERVER_PORT: "5432"
+      EUREKASERVER_PORT:   "8761"
+      CONFIGSERVER_PORT:   "8888"
+      ZUULSERVER_PORT:     "5555"
+      ENCRYPT_KEY:       "IMSYMMETRIC"
+  

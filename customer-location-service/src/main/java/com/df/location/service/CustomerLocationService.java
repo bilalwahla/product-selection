@@ -30,6 +30,18 @@ public class CustomerLocationService {
   }
 
   public CustomerLocation getCustomerLocation(String customerId) {
-    throw new UnsupportedOperationException();
+    logger.debug("In the customerLocationService.getCustomerLocation() call");
+
+    Span newSpan = tracer.createSpan("getCustomerLocation DB call");
+    try {
+      CustomerLocation customerLocation = customerLocationRepository.findByCustomerId(customerId);
+      if (customerLocation != null)
+        return customerLocation;
+      else throw new NoCustomerLocationFoundException(customerId);
+    } finally {
+      newSpan.tag("peer.service", "postgres");
+      newSpan.logEvent(org.springframework.cloud.sleuth.Span.CLIENT_RECV);
+      tracer.close(newSpan);
+    }
   }
 }
