@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/bilalwahla/product-selection.svg?branch=master)](https://travis-ci.org/bilalwahla/product-selection)
-
 # Product Selection
 
 I have chosen to implement this project using microservices architecture. While the assignment itself is quite simple, the project does have some boilerplate code to depict my understanding of the architecture and the patterns that are important to be applied when implementing such architecture.
@@ -16,4 +14,32 @@ Rest of the services in the project are the assignment requirements:
 
  * customer-location-service
  * catalogue-service
+
+## Software needed to build and run
+1.  [Docker] (http://docker.com).
+
+### Building the Docker Images
+To build the project as a docker images, open a command-line window change to the root directory where you have downloaded the project source code.
+
+Run the following maven command. This command will execute the [Spotify docker plugin](https://github.com/spotify/docker-maven-plugin) defined in the pom.xml file.  
+
+```bash
+mvn clean package docker:build
+```
+
+If everything builds successfully you should see a message indicating that the build was successful.
+
+### Running the service
+
+I have created a docker-compose file that we can use to start the actual images.  To start the docker images we created above, issue the following docker-compose command from the root of the project:
+
+```bash
+docker-compose -f docker/common/docker-compose.yml up
+```
+
+If everything starts up correctly you should see a bunch of Spring Boot information fly by on standard out.  At this point the service will be up and running.
+
+## Postman collection
+
+There is no web application that consumes the customer-location-service and catalogue-service (via Zuul Server - the API Gateway Service) but please find a simple Postman collection under /Postman in the root of the project that you can import into your [Postman](https://www.getpostman.com) and give the services a go.
 
