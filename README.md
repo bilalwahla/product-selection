@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/bilalwahla/product-selection.svg?branch=master)](https://travis-ci.org/bilalwahla/product-selection) [![codecov](https://codecov.io/gh/bilalwahla/product-selection/branch/master/graph/badge.svg)](https://codecov.io/gh/bilalwahla/product-selection)
+
 # Product Selection
 
 I have chosen to implement this project using microservices architecture. While the assignment itself is quite simple, the project does have some boilerplate code to depict my understanding of the architecture and the patterns that are important to be applied when implementing such architecture.
